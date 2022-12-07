@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option go_package = "./blogpost";
+
+import "protos/common.proto";
+
+// The service definition.
+service AuthorService {
+    rpc Ping (Empty) returns (Pong) {}
+
+    rpc CreateAuthor (CreateAuthorRequest) returns (Author) {}
+    rpc UpdateAuthor (UpdateAuthorRequest) returns (Author) {}
+    rpc DeleteAuthor (DeleteAuthorRequest) returns (Author) {}
+    rpc GetAuthorList (GetAuthorListRequest) returns (GetAuthorListResponse) {}
+    rpc GetAuthorByID (GetAuthorByIDRequest) returns (GetAuthorByIDResponse) {}
+}
+
+
+message CreateAuthorRequest {
+     = 1;
+    string author_id = 2;
+}
+
+message UpdateAuthorRequest {
+    string id = 1;
+    Content content = 2;
+}
+
+message DeleteAuthorRequest {
+    string id = 1;
+}
+
+message GetAuthorListRequest {
+    int32 offset = 1;
+    int32 limit = 2;
+    string search = 3;
+}
+
+message GetAuthorListResponse {
+    repeated Author articles = 1;
+}
+
+message GetAuthorByIDRequest {
+    string id = 1;
+}
+
+message GetAuthorByIDResponse {
+    message Author {
+        string id = 1;
+        string fullname = 2;
+        string created_at = 3;
+        string updated_at = 4;
+    }
+    string id = 1;
+    Content content = 2;
+    Author author = 3;
+    string created_at = 4;
+    string updated_at = 5;
+}
