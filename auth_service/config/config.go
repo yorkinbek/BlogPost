@@ -36,7 +36,7 @@ func Load() Config {
 
 	config := Config{}
 
-	config.App = cast.ToString(getOrReturnDefaultValue("APP", "uacademy_article"))
+	config.App = cast.ToString(getOrReturnDefaultValue("APP", "webblog"))
 	config.AppVersion = cast.ToString(getOrReturnDefaultValue("APP_VERSION", "1.0.0"))
 	config.Environment = cast.ToString(getOrReturnDefaultValue("ENVIRONMENT", "development"))
 
